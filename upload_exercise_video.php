@@ -45,7 +45,9 @@ $safeExerciseName = strtolower($exerciseName);
 $safeExerciseName = preg_replace('/[^a-z0-9_ -]/i', '', $safeExerciseName);
 $safeExerciseName = str_replace(' ', '_', $safeExerciseName);
 
-$uploadDir = "uploads/ai_videos/user_{$userId}/{$sessionId}/{$safeExerciseName}/";
+$uploadBaseDir = "D:/xampp/.uploads/uploads/ai_videos";
+$relativeDir = "user_{$userId}/{$sessionId}/{$safeExerciseName}/";
+$uploadDir = $uploadBaseDir . "/" . $relativeDir;
 
 if (!is_dir($uploadDir)) {
     if (!mkdir($uploadDir, 0777, true)) {

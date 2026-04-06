@@ -54,7 +54,7 @@ try {
 
     // workout sessions
     $stmtSessions = $conn->prepare("
-        SELECT id, user_id, routine_id, status, global_score, duration_seconds, created_at
+        SELECT id, user_id, routine_id, status, global_score, duration_seconds, created_at, session_type
         FROM workout_sessions
         WHERE user_id = ?
         ORDER BY created_at DESC
@@ -96,7 +96,19 @@ try {
 
     // processed_videos
     $stmtProcessed = $conn->prepare("
-        SELECT id, user_id, session_id, exercise_name, result_json, model_status, error_message, created_at, sync_status
+        SELECT 
+            id,
+            user_id,
+            session_id,
+            exercise_name,
+            result_json,
+            file_path,
+            file_name,
+            model_status,
+            error_message,
+            created_at,
+            sync_status,
+            score
         FROM processed_videos
         WHERE user_id = ?
         ORDER BY created_at DESC
