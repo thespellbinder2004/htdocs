@@ -251,7 +251,7 @@
   <footer class="site-footer">
     <div class="container footer-content">
       <p>© <?php echo date('Y'); ?> BetterGYM. All rights reserved.</p>
-      <p>by Strawcas, Takkimi, Stephen. Pakyu Abel T. Soliman</p>
+      <p>by Strawcas, Takkimi, Stephen. Pakyu Jordan Pierce Romero</p>
     </div>
   </footer>
 
