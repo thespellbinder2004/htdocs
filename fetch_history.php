@@ -116,10 +116,29 @@ try {
     $stmtProcessed->execute([$userId]);
     $processedVideos = $stmtProcessed->fetchAll(PDO::FETCH_ASSOC);
 
+    // notifications
+    $stmtNotifications = $conn->prepare("
+        SELECT
+            id,
+            user_id,
+            session_id,
+            title,
+            message,
+            is_read,
+            created_at
+        FROM notifications
+        WHERE user_id = ?
+        AND is_read = 0
+        ORDER BY created_at DESC
+    ");
+    $stmtNotifications->execute([$userId]);
+    $notifications = $stmtNotifications->fetchAll(PDO::FETCH_ASSOC);
+
     echo json_encode([
         "status" => "success",
         "sessions" => $sessions,
-        "processed_videos" => $processedVideos
+        "processed_videos" => $processedVideos,
+        "notifications" => $notifications
     ]);
     exit();
 
