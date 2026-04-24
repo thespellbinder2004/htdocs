@@ -11,7 +11,6 @@ require_once "db.php";
 $userId = $_POST['user_id'] ?? null;
 $sessionId = $_POST['session_id'] ?? null;
 $exerciseName = $_POST['exercise_name'] ?? null;
-$routineId = $_POST['routine_id'] ?? null;
 $sessionType = $_POST['session_type'] ?? 'ai';
 
 if (!$userId || !$sessionId || !$exerciseName) {
@@ -92,7 +91,6 @@ try {
             (
                 id,
                 user_id,
-                routine_id,
                 status,
                 global_score,
                 duration_seconds,
@@ -106,7 +104,6 @@ try {
                 ?,
                 ?,
                 ?,
-                ?,
                 NOW(),
                 ?
             )
@@ -115,7 +112,6 @@ try {
         $createSession->execute([
             $sessionId,
             $userId,
-            !empty($routineId) ? $routineId : null,
             'pending',
             null,
             null,

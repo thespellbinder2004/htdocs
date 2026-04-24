@@ -54,7 +54,7 @@ try {
 
     // workout sessions
     $stmtSessions = $conn->prepare("
-        SELECT id, user_id, routine_id, status, global_score, duration_seconds, created_at, session_type
+        SELECT id, user_id, status, global_score, duration_seconds, created_at, session_type
         FROM workout_sessions
         WHERE user_id = ?
         ORDER BY created_at DESC

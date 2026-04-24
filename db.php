@@ -3,7 +3,7 @@
 $host = 'localhost'; // Change if your DB is hosted elsewhere
 $db   = 'bettergym_db';
 $user = 'root'; // Replace with your actual DB username
-$pass = '';     // Replace with your actual DB password
+$pass = '';    
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

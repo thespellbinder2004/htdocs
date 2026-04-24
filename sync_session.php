@@ -42,17 +42,17 @@ $userId = $data["user_id"];
 
     // 4. INSERT PARENT SESSION (ON DUPLICATE KEY UPDATE handles retries gracefully)
     $stmtSession = $conn->prepare("
-        INSERT INTO workout_sessions (id, user_id, routine_id, status, global_score, duration_seconds) 
-        VALUES (?, ?, ?, ?, ?, ?) 
-        ON DUPLICATE KEY UPDATE 
-        status = VALUES(status), global_score = VALUES(global_score), duration_seconds = VALUES(duration_seconds)
+        INSERT INTO workout_sessions (id, user_id, status, global_score, duration_seconds)
+        VALUES (?, ?, ?, ?, ?)
+        ON DUPLICATE KEY UPDATE
+        status = VALUES(status),
+        global_score = VALUES(global_score),
+        duration_seconds = VALUES(duration_seconds)
     ");
     
-    $routineId = !empty($data['routine_id']) ? $data['routine_id'] : null;
     $stmtSession->execute([
         $data['session_id'],
         $userId,
-        $routineId,
         $data['status'] ?? 'IN_PROGRESS',
         $data['global_score'] ?? 0,
         $data['duration_seconds'] ?? 0
