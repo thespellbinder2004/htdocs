@@ -1,5 +1,5 @@
 <?php
-  $apkPath = "apk/bettergym-releasse.apk";
+  $apkPath = "downloads/bettergym.apk";
 ?>
 <!DOCTYPE html>
 <html lang="en">
